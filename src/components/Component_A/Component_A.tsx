@@ -1,8 +1,17 @@
+import { SyntheticEvent, useContext } from 'react';
+import { Context } from '../../index';
+
 const Component_A = () => {
+  const store = useContext(Context);
+
+  const onChangeSelectHandler = (e: SyntheticEvent) => {
+    store.setSell((e.target as HTMLSelectElement).value);
+  };
+
   return (
     <div className='a'>
       <h4>Предлагает клиент</h4>
-      <select>
+      <select onChange={onChangeSelectHandler}>
         <option value='малина'>малина</option>
         <option value='клубника'>клубника</option>
         <option value='черешня'>черешня</option>
